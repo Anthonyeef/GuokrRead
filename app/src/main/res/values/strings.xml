@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GuokrRead</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="home">Home</string>
+    <string name="explore">Explore</string>
+</resources>
