@@ -2,13 +2,15 @@ package io.github.anthonyeef.guokrread.app;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
+
+import com.facebook.drawee.backends.pipeline.Fresco;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -21,25 +23,54 @@ public class UIHome extends AppCompatActivity {
 
     @Bind(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
-    @Bind(R.id.toolbar)
-    Toolbar toolbar;
-    @Bind(R.id.tabs)
-    TabLayout tabLayout;
     @Bind(R.id.nav_view)
     NavigationView navigationView;
-    @Bind(R.id.viewPager)
-    ViewPager viewPager;
+    @Bind(R.id.nav)
+    RelativeLayout mNavBar;
+    @Bind(R.id.nav_menu)
+    RelativeLayout mNavMenu;
+    @Bind(R.id.nav_bottom_1)
+    RelativeLayout mNavBtnLeft;
+    @Bind(R.id.nav_bottom_2)
+    RelativeLayout mNavBtnRight;
+    @Bind(R.id.drawer_view)
+    NavigationView mLeftDrawer;
+
+
+    private HomeFragment mHomeFragment;
+    private ExploreFragment mExploreFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        Fresco.initialize(this);
+        setContentView(R.layout.activity_base);
         ButterKnife.bind(this);
+        initView();
 
-        setSupportActionBar(toolbar);
-        setupViewPager(viewPager);
+        initPager();
+
         setupDrawerContent(navigationView);
-        tabLayout.setupWithViewPager(viewPager);
+
+    }
+
+
+    private void initView() {
+        mNavMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!mDrawerLayout.isDrawerOpen(mLeftDrawer))
+                    mDrawerLayout.openDrawer(mLeftDrawer);
+            }
+        });
+    }
+
+    private void initPager() {
+        mHomeFragment = new HomeFragment();
+        Bundle homeBundle = new Bundle();
+        homeBundle.putInt(HomeFragment.TAB_INDEX_FIELD, 0);
+        mHomeFragment.setArguments(homeBundle);
+        mHomeFragment.setOnScr
 
     }
 

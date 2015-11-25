@@ -3,5 +3,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="home">Home</string>
+    <string name="Guokr_name">Guokr!</string>
+    <string name="hand_pick">Handpick</string>
     <string name="explore">Explore</string>
 </resources>
