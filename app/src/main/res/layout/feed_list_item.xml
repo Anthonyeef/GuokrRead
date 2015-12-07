@@ -23,6 +23,7 @@
                 android:background="@drawable/item_tag_background"
                 android:textColor="@color/text_most_gray"
                 android:clickable="true"
+                android:text="Lei Lau Dao"
                 android:paddingBottom="4dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
@@ -60,6 +61,7 @@
             android:paddingLeft="@dimen/feed_title_padding_left"
             android:paddingRight="@dimen/feed_title_padding_right"
             android:textColor="@color/default_font"
+            android:text="Title Lei Lau Mei"
             android:textSize="@dimen/feed_title_font_size"
             android:textStyle="bold"/>
         
@@ -107,6 +109,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:textColor="@color/pretty_green"
+                            android:text="Lei Lau Mei"
                             android:textSize="@dimen/feed_detail_author_text"/>
                     </LinearLayout>
                     <TextView
