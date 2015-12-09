@@ -6,4 +6,7 @@
     <string name="Guokr_name">Guokr!</string>
     <string name="hand_pick">Handpick</string>
     <string name="explore">Explore</string>
+
+
+    <string name="page_title_home">Home</string>
 </resources>

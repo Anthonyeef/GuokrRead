@@ -11,14 +11,51 @@ public class Post {
 
     }
 
+    private String id;
     private String category;
     private String link_source;
     private String title;
-    private String source;
+    private String source_name;
     private String author;
     private String summary;
     private boolean is_top;
     private String headline_img;
+    private String replies_count;
+    private String link_v2;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getReplies_count() {
+        return replies_count;
+    }
+
+    public void setReplies_count(String replies_count) {
+        this.replies_count = replies_count;
+    }
+
+    public String getSource_name() {
+        return source_name;
+    }
+
+    public void setSource_name(String source_name) {
+        this.source_name = source_name;
+    }
+
+    public String getLink_v2() {
+        return link_v2;
+    }
+
+    public void setLink_v2(String link_v2) {
+        this.link_v2 = link_v2;
+    }
+
+
 
     public String getCategory() {
         return category;
@@ -42,14 +79,6 @@ public class Post {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getSource() {
-        return source;
-    }
-
-    public void setSource(String source) {
-        this.source = source;
     }
 
     public String getAuthor() {

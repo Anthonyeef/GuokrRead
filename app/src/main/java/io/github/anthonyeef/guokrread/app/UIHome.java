@@ -42,7 +42,7 @@ public class UIHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fresco.initialize(this);
-        setContentView(R.layout.activity_base);
+        setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         initView();
 
@@ -90,7 +90,8 @@ public class UIHome extends AppCompatActivity {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager());
+        PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), this);
+        viewPager.setAdapter(adapter);
 //        adapter.addFragment(new HomeFragment(), getString(R.string.home));
 //        adapter.addFragment(new ExploreFragment(), getString(R.string.explore));
     }
