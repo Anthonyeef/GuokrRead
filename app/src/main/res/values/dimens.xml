@@ -27,4 +27,7 @@
     <dimen name="feed_detail_date_text">12sp</dimen>
     <dimen name="feed_detail_author_text">14sp</dimen>
 
+    <dimen name="comment_item_padding_left_right">10dp</dimen>
+    <dimen name="comment_item_margin">10dp</dimen>
+
 </resources>

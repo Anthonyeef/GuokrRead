@@ -14,7 +14,7 @@ import java.util.List;
 
 import io.github.anthonyeef.guokrread.R;
 import io.github.anthonyeef.guokrread.adapter.ArticleRecyclerAdapter;
-import io.github.anthonyeef.guokrread.model.result;
+import io.github.anthonyeef.guokrread.rest.model.result;
 import io.github.anthonyeef.guokrread.rest.model.ResponseModel;
 import io.github.anthonyeef.guokrread.rest.service.HandPickClient;
 import io.github.anthonyeef.guokrread.rest.service.ServiceGenerator;
@@ -42,13 +42,31 @@ public class HomeFragment extends Fragment {
                              savedInstanceState) {
         final View view = inflater.inflate(R.layout.home_content_fragment, container, false);
 
-        RecyclerView rv = (RecyclerView) view.findViewById(R.id.home_content_fragment);
+        final RecyclerView rv = (RecyclerView) view.findViewById(R.id.home_content_fragment);
         setupRecyclerView(rv, mResults);
-        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer)
+
+
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer);
+        swipeContainer.setColorSchemeColors(R.color.pretty_green);
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchData(rv);
+            }
+        });
+
+        if (mResults == null) {
+            swipeContainer.post(new Runnable() {
+                @Override
+                public void run() {
+                    swipeContainer.setRefreshing(true);
+                    fetchData(rv);
+                }
+            });
+        }
 
         /*RecyclerView rv = (RecyclerView) inflater.inflate(
                 R.layout.home_content_fragment, container,false);*/
-        setupRetrofit(rv);
         return view;
     }
 
@@ -57,6 +75,10 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(new ArticleRecyclerAdapter(getContext(), results));
     }
 
+    public void fetchData(RecyclerView recyclerView) {
+        setupRecyclerView(recyclerView, mResults);
+        setupRetrofit(recyclerView);
+    }
     private void setupRetrofit(final RecyclerView recyclerView) {
 
   /*      HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
@@ -86,6 +108,7 @@ public class HomeFragment extends Fragment {
                 ResponseModel responseModel = response.body();
                 mResults = responseModel.getResult();
                 setupRecyclerView(recyclerView, mResults);
+                swipeContainer.setRefreshing(false);
            /*     Log.v(TAG, responseModel.getNow());
                 Log.v(TAG, responseModel.toString());
                 Log.v(TAG, responseModel.getResult().toString());*/

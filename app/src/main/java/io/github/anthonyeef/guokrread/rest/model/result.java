@@ -1,4 +1,4 @@
-package io.github.anthonyeef.guokrread.model;
+package io.github.anthonyeef.guokrread.rest.model;
 
 import java.util.List;
 

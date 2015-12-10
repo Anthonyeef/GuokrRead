@@ -10,7 +10,7 @@ public class ResponseModel {
     private String now;
     private String ok;
 
-    public List<io.github.anthonyeef.guokrread.model.result> result;
+    public List<io.github.anthonyeef.guokrread.rest.model.result> result;
 
     public String getNow() {
         return now;
@@ -28,11 +28,11 @@ public class ResponseModel {
         this.ok = ok;
     }
 
-    public List<io.github.anthonyeef.guokrread.model.result> getResult() {
+    public List<io.github.anthonyeef.guokrread.rest.model.result> getResult() {
         return result;
     }
 
-    public void add(io.github.anthonyeef.guokrread.model.result result) {
+    public void add(io.github.anthonyeef.guokrread.rest.model.result result) {
         if (this.result == null) {
             this.result = new LinkedList<>();
         }

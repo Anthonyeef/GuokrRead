@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:fresco="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/comment_container"
+                android:paddingLeft="@dimen/comment_item_padding_left_right"
+                android:paddingRight="@dimen/comment_item_padding_left_right"
+                android:layout_marginTop="@dimen/comment_item_margin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/comment_header"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/comment_avatar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@color/img_placeholder"
+            fresco:roundAsCircle="true"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/comment_avatar"
+            android:layout_marginLeft="@dimen/comment_item_margin"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_most_gray"
+                android:fontFamily="sans-serif-light"
+                android:text="Lei Lau Mei"/>
+            <TextView
+                android:id="@+id/timestamp"
+                android:paddingTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_most_gray"
+                android:text="time la"
+                android:fontFamily="sans-serif-light"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/floor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="1"
+            android:textColor="@color/text_most_gray"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/comment_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/comment_header">
+        <TextView
+            android:id="@+id/comment_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I used to rule the world."/>
+    </RelativeLayout>
+
+</RelativeLayout>

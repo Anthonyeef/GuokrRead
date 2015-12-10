@@ -13,7 +13,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 import io.github.anthonyeef.guokrread.R;
-import io.github.anthonyeef.guokrread.model.result;
+import io.github.anthonyeef.guokrread.rest.model.result;
 
 /**
  * Created by anthonyeef on 12/7/15.
