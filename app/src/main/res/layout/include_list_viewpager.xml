@@ -23,7 +23,7 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"/>
+            app:tabIndicatorColor="@color/img_placeholder"/>
             <!--app:tabTextColor="#000"/>-->
 
     </android.support.design.widget.AppBarLayout>
