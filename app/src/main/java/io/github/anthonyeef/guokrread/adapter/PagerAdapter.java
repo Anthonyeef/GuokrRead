@@ -58,8 +58,8 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mTitles.get(position);
-//        return mContext.getString(TITLES[position]);
+//        return mTitles.get(position);
+        return mContext.getString(TITLES[position]);
    /*     final String title;
         switch (position) {
             case 0:

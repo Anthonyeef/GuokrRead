@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/item_header_height">
             <TextView
-                android:id="@+id/item_header_text"
+                android:id="@+id/item_source"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -28,8 +28,8 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingTop="4dp"
-                android:textSize="15sp"
-                android:visibility="gone"/>
+                android:textSize="15sp"/>
+                <!--android:visibility="gone"/>-->
         </RelativeLayout>
 
         <RelativeLayout

@@ -17,12 +17,14 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:layout_scrollFlags="scroll|enterAlways" />
+            app:layout_scrollFlags="scroll|enterAlwaysCollapsed" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"/>
+            <!--app:tabTextColor="#000"/>-->
 
     </android.support.design.widget.AppBarLayout>
 
@@ -30,6 +32,7 @@
         android:id="@+id/pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#EEE"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
  <!--   <android.support.design.widget.FloatingActionButton

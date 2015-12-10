@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +13,7 @@ import java.util.List;
 
 import io.github.anthonyeef.guokrread.R;
 import io.github.anthonyeef.guokrread.adapter.ArticleRecyclerAdapter;
-import io.github.anthonyeef.guokrread.model.Post;
+import io.github.anthonyeef.guokrread.model.result;
 import io.github.anthonyeef.guokrread.rest.model.ResponseModel;
 import io.github.anthonyeef.guokrread.rest.service.HandPickClient;
 import io.github.anthonyeef.guokrread.rest.service.ServiceGenerator;
@@ -30,7 +29,7 @@ public class HomeFragment extends Fragment {
     private static final String TAG = HomeFragment.class
             .getSimpleName();
 
-    private List<Post> mPosts = null;
+    private List<result> mResults = null;
 
     public static HomeFragment newInstance() {
         return newInstance();
@@ -41,94 +40,55 @@ public class HomeFragment extends Fragment {
                              savedInstanceState) {
         RecyclerView rv = (RecyclerView) inflater.inflate(
                 R.layout.home_content_fragment, container,false);
-        setupRecyclerView(rv);
+        setupRecyclerView(rv, mResults);
         setupRetrofit(rv);
         return rv;
     }
 
-    private void setupRecyclerView(RecyclerView recyclerView) {
+    private void setupRecyclerView(RecyclerView recyclerView, List<result> results) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        recyclerView.setAdapter(new ArticleRecyclerAdapter(getContext(), mPosts));
+        recyclerView.setAdapter(new ArticleRecyclerAdapter(getContext(), results));
     }
 
     private void setupRetrofit(final RecyclerView recyclerView) {
 
-        HandPickClient client = ServiceGenerator.createService(HandPickClient.class);
+  /*      HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);*/
 
+//        OkHttpClient httpClient = new OkHttpClient();
+
+//        httpClient.interceptors().add(logging);
+
+/*        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(API_BASE_URL)
+                *//*.addConverterFactory(GsonConverterFactory
+                        .create(new GsonBuilder().registerTypeAdapter(ResponseModel.class,
+                                new ResponseDeserializerJson()).create()))*//*
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(httpClient)
+                .build();*/
+
+//        HandPickClient client = retrofit.create(HandPickClient.class);
+
+        HandPickClient client = ServiceGenerator.createService(HandPickClient.class);
         Call<ResponseModel> call =
-                client.fetchResponse("by_since", "20", "all");
+                client.fetchResponse("by_since", "15", "20", "all");
         call.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Response<ResponseModel> response, Retrofit retrofit) {
                 ResponseModel responseModel = response.body();
-                Log.v(TAG, getString(responseModel.getResult().size()));
+                mResults = responseModel.getResult();
+                setupRecyclerView(recyclerView, mResults);
+           /*     Log.v(TAG, responseModel.getNow());
                 Log.v(TAG, responseModel.toString());
-                Log.v(TAG, responseModel.getResult().toString());
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-
-            }
-        });
-/*        call.enqueue(new Callback<ResponseModel>() {
-            @Override
-            public void onResponse(Response<ResponseModel> response, Retrofit retrofit) {
-                if (response.isSuccess()){
-                    Log.e(TAG, response.body().getOk());
-                    mPosts = response.body().getResult();
-                    Log.e(TAG, mPosts.get(0).getTitle());
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-
-            }
-        });*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-        /*Setup Gson*//*
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(Post.class, new PostDeserializer())
-                .create();
-
-        *//*Specify the BASE_URL and converter for Retrofit*//*
-
-
-        Retrofit retrofitGenerator = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
-                .addConverterFactory(gson)
-                .build();
-        *//*Create service and make the call*//*
-        HandPickClient hanpickService = retrofitGenerator.create(HandPickClient.class);
-
-        Call<List<Post>> call = hanpickService.postList("by_since", "20", "all");
-        call.enqueue(new Callback<List<Post>>() {
-            @Override
-            public void onResponse(Response<List<Post>> response, Retrofit retrofit) {
-                Log.e(TAG, response.body().toString());
-                recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-                ArticleRecyclerAdapter adapter = new ArticleRecyclerAdapter(getContext(), response.body());
-                recyclerView.setAdapter(adapter);
+                Log.v(TAG, responseModel.getResult().toString());*/
             }
 
             @Override
             public void onFailure(Throwable t) {
                 t.printStackTrace();
-//                Log.e(TAG, "ya bug here");
             }
-        });*/
+        });
+
     }
 }

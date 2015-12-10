@@ -7,7 +7,7 @@ import java.util.List;
  */
 
 /*TO DO: implement pacel plugin*/
-public class Post {
+public class result {
 
     private String category;
     private String link_v2_sync_img;
@@ -25,7 +25,7 @@ public class Post {
     private String link;
     private String link_v2;
     private String headline_img;
-    private int replies_count;
+    private long replies_count;
     private String headline_img_tb;
     private String id;
 
@@ -157,11 +157,11 @@ public class Post {
         this.headline_img = headline_img;
     }
 
-    public int getReplies_count() {
+    public long getReplies_count() {
         return replies_count;
     }
 
-    public void setReplies_count(int replies_count) {
+    public void setReplies_count(long replies_count) {
         this.replies_count = replies_count;
     }
 
@@ -183,7 +183,7 @@ public class Post {
 
     @Override
     public String toString(){
-        return "Post{" +
+        return "result{" +
                 "id=" + id +
                 ",title=" + title +
                 ",author=" + author +

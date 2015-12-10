@@ -2,6 +2,7 @@ package io.github.anthonyeef.guokrread.app;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -25,8 +26,8 @@ public class UIHome extends AppCompatActivity {
     Toolbar mToolbar;
     @Bind(R.id.nav_view)
     NavigationView navigationView;
-//    @Bind(R.id.viewpager)
-//    ViewPager mViewPager;
+    @Bind(R.id.tabs)
+    TabLayout mTabs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,14 +72,18 @@ public class UIHome extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), this);
         adapter.addFragment(new HomeFragment(), "Home");
+        adapter.addFragment(new HomeFragment(), "Home2");
         viewPager.setAdapter(adapter);
+
+        mTabs.setupWithViewPager(viewPager);
+
 //        adapter.addFragment(new HomeFragment(), getString(R.string.home));
 //        adapter.addFragment(new ExploreFragment(), getString(R.string.explore));
     }
 
     private void setuplayout() {
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Guokr Read");
+        getSupportActionBar().setTitle(" ₍₍ (ง ᐛ)ว ⁾⁾");
     }
 
     private void setupDrawerContent(NavigationView navigationView) {

@@ -1,8 +1,7 @@
 package io.github.anthonyeef.guokrread.rest.model;
 
+import java.util.LinkedList;
 import java.util.List;
-
-import io.github.anthonyeef.guokrread.model.Post;
 
 /**
  * Created by anthonyeef on 12/9/15.
@@ -11,7 +10,7 @@ public class ResponseModel {
     private String now;
     private String ok;
 
-    public List<Post> result;
+    public List<io.github.anthonyeef.guokrread.model.result> result;
 
     public String getNow() {
         return now;
@@ -29,13 +28,17 @@ public class ResponseModel {
         this.ok = ok;
     }
 
-    public List<Post> getResult() {
+    public List<io.github.anthonyeef.guokrread.model.result> getResult() {
         return result;
     }
 
-    public void setResult(List<Post> result) {
-        this.result = result;
+    public void add(io.github.anthonyeef.guokrread.model.result result) {
+        if (this.result == null) {
+            this.result = new LinkedList<>();
+        }
+        this.result.add(result);
     }
+
 
 /*    @Override
     public String toString() {

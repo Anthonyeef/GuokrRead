@@ -13,7 +13,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 import io.github.anthonyeef.guokrread.R;
-import io.github.anthonyeef.guokrread.model.Post;
+import io.github.anthonyeef.guokrread.model.result;
 
 /**
  * Created by anthonyeef on 12/7/15.
@@ -22,11 +22,11 @@ public class ArticleRecyclerAdapter extends
         RecyclerView.Adapter<ArticleRecyclerAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<Post> mPosts;
+    private List<result> mResults;
 
-    public ArticleRecyclerAdapter(Context context, List<Post> posts) {
+    public ArticleRecyclerAdapter(Context context, List<result> results) {
         this.mContext = context;
-        this.mPosts = posts;
+        this.mResults = results;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -34,6 +34,8 @@ public class ArticleRecyclerAdapter extends
         public final SimpleDraweeView mItemImage;
         public final TextView mTitle;
         public final TextView mAuthor;
+        public final TextView mReply;
+        public final TextView mSource;
 
         public ViewHolder(View view) {
             super(view);
@@ -41,6 +43,8 @@ public class ArticleRecyclerAdapter extends
             mItemImage = (SimpleDraweeView) view.findViewById(R.id.head_img_view);
             mTitle = (TextView) view.findViewById(R.id.feed_title);
             mAuthor = (TextView) view.findViewById(R.id.feed_author_name);
+            mReply = (TextView) view.findViewById(R.id.feed_replies_count);
+            mSource = (TextView) view.findViewById(R.id.item_source);
         }
 
     }
@@ -54,25 +58,28 @@ public class ArticleRecyclerAdapter extends
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        Post post = mPosts.get(position);
+        result result = mResults.get(position);
 
-        holder.mTitle.setText(post.getTitle());
-        holder.mAuthor.setText(post.getAuthor());
+        holder.mTitle.setText(result.getTitle());
+        holder.mAuthor.setText(result.getAuthor());
+//        holder.mReply.setText(result.getReplies_count());
+        holder.mReply.setText(Long.toString(result.getReplies_count()));
+        holder.mSource.setText(result.getSource_name());
 
-        Uri imageUri = Uri.parse(post.getHeadline_img());
+        Uri imageUri = Uri.parse(result.getHeadline_img());
         holder.mItemImage.setImageURI(imageUri);
 
     }
 
 
-    public void add(int position, Post item) {
-        mPosts.add(position, item);
+    public void add(int position, result item) {
+        mResults.add(position, item);
         notifyItemInserted(position);
     }
 
     @Override
     public int getItemCount() {
-        return (null != mPosts? mPosts.size() : 0);
-//        return mPosts.size();
+        return (null != mResults ? mResults.size() : 0);
+//        return mResults.size();
     }
 }

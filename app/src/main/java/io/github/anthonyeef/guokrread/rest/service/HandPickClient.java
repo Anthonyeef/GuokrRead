@@ -10,16 +10,9 @@ import retrofit.http.Query;
  */
 public interface HandPickClient {
 
-    /*@GET("/article.json?retrivetype=by_since")*/
-
- /*   @GET("/handpick/article.json?")
-    Call<List<Post>> postList(@Query("retrive_type") String type,
-                              @Query("limit") String limit,
-                              @Query("category") String category);*/
-
-
-    @GET("/handpick/article.json?")
-    Call<ResponseModel> fetchResponse(@Query("retrive_type") String type,
+    @GET("/handpick/article.json")
+    Call<ResponseModel> fetchResponse(@Query("retrieve_type") String type,
+                                      @Query("ad") String ad,
                                       @Query("limit") String limit,
                                       @Query("category") String category);
 }
