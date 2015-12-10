@@ -82,4 +82,15 @@ public class ArticleRecyclerAdapter extends
         return (null != mResults ? mResults.size() : 0);
 //        return mResults.size();
     }
+
+    /*TODO for swiperefresh*/
+    public void clear() {
+        mResults.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<result> results) {
+        mResults.addAll(results);
+        notifyDataSetChanged();
+    }
 }

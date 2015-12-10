@@ -3,6 +3,7 @@ package io.github.anthonyeef.guokrread.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ public class HomeFragment extends Fragment {
     private static final String TAG = HomeFragment.class
             .getSimpleName();
 
+    private SwipeRefreshLayout swipeContainer;
     private List<result> mResults = null;
 
     public static HomeFragment newInstance() {
@@ -38,11 +40,16 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
                              savedInstanceState) {
-        RecyclerView rv = (RecyclerView) inflater.inflate(
-                R.layout.home_content_fragment, container,false);
+        final View view = inflater.inflate(R.layout.home_content_fragment, container, false);
+
+        RecyclerView rv = (RecyclerView) view.findViewById(R.id.home_content_fragment);
         setupRecyclerView(rv, mResults);
+        swipeContainer = (SwipeRefreshLayout) view.findViewById(R.id.swipeContainer)
+
+        /*RecyclerView rv = (RecyclerView) inflater.inflate(
+                R.layout.home_content_fragment, container,false);*/
         setupRetrofit(rv);
-        return rv;
+        return view;
     }
 
     private void setupRecyclerView(RecyclerView recyclerView, List<result> results) {
