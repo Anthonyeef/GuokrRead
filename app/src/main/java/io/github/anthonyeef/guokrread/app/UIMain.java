@@ -18,7 +18,7 @@ import io.github.anthonyeef.guokrread.R;
 import io.github.anthonyeef.guokrread.adapter.PagerAdapter;
 import io.github.anthonyeef.guokrread.fragment.HomeFragment;
 
-public class UIHome extends AppCompatActivity {
+public class UIMain extends AppCompatActivity {
 
     @Bind(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;

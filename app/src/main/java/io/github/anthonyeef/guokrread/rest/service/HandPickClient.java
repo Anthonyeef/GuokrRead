@@ -1,8 +1,10 @@
 package io.github.anthonyeef.guokrread.rest.service;
 
+import io.github.anthonyeef.guokrread.rest.model.Detail;
 import io.github.anthonyeef.guokrread.rest.model.ResponseModel;
 import retrofit.Call;
 import retrofit.http.GET;
+import retrofit.http.Path;
 import retrofit.http.Query;
 
 /**
@@ -15,6 +17,9 @@ public interface HandPickClient {
                                       @Query("ad") String ad,
                                       @Query("limit") String limit,
                                       @Query("category") String category);
+
+    @GET("/pick/v2/{id}")
+    Call<Detail> getDetail(@Path("id") long id);
 }
 
 

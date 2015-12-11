@@ -5,13 +5,13 @@ import java.util.List;
 /**
  * Created by anthonyeef on 12/10/15.
  */
-public class comment {
+public class Comment {
 
     private String now;
     private boolean ok;
     private long limit;
 
-    /*TODO: Add comment type*/
+    /*TODO: Add Comment type*/
     private List<result> mResultList;
 
     private class result {

@@ -14,8 +14,8 @@ import java.util.List;
 
 import io.github.anthonyeef.guokrread.R;
 import io.github.anthonyeef.guokrread.adapter.ArticleRecyclerAdapter;
-import io.github.anthonyeef.guokrread.rest.model.result;
 import io.github.anthonyeef.guokrread.rest.model.ResponseModel;
+import io.github.anthonyeef.guokrread.rest.model.result;
 import io.github.anthonyeef.guokrread.rest.service.HandPickClient;
 import io.github.anthonyeef.guokrread.rest.service.ServiceGenerator;
 import retrofit.Call;
@@ -33,16 +33,12 @@ public class HomeFragment extends Fragment {
     private SwipeRefreshLayout swipeContainer;
     private List<result> mResults = null;
 
-    public static HomeFragment newInstance() {
-        return newInstance();
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
                              savedInstanceState) {
-        final View view = inflater.inflate(R.layout.home_content_fragment, container, false);
+        final View view = inflater.inflate(R.layout.home_fragment, container, false);
 
-        final RecyclerView rv = (RecyclerView) view.findViewById(R.id.home_content_fragment);
+        final RecyclerView rv = (RecyclerView) view.findViewById(R.id.recyclerview);
         setupRecyclerView(rv, mResults);
 
 
@@ -65,8 +61,6 @@ public class HomeFragment extends Fragment {
             });
         }
 
-        /*RecyclerView rv = (RecyclerView) inflater.inflate(
-                R.layout.home_content_fragment, container,false);*/
         return view;
     }
 
@@ -88,16 +82,6 @@ public class HomeFragment extends Fragment {
 
 //        httpClient.interceptors().add(logging);
 
-/*        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(API_BASE_URL)
-                *//*.addConverterFactory(GsonConverterFactory
-                        .create(new GsonBuilder().registerTypeAdapter(ResponseModel.class,
-                                new ResponseDeserializerJson()).create()))*//*
-                .addConverterFactory(GsonConverterFactory.create())
-                .client(httpClient)
-                .build();*/
-
-//        HandPickClient client = retrofit.create(HandPickClient.class);
 
         HandPickClient client = ServiceGenerator.createService(HandPickClient.class);
         Call<ResponseModel> call =
@@ -109,9 +93,7 @@ public class HomeFragment extends Fragment {
                 mResults = responseModel.getResult();
                 setupRecyclerView(recyclerView, mResults);
                 swipeContainer.setRefreshing(false);
-           /*     Log.v(TAG, responseModel.getNow());
-                Log.v(TAG, responseModel.toString());
-                Log.v(TAG, responseModel.getResult().toString());*/
+//                Log.v(TAG, responseModel.getNow());
             }
 
             @Override
@@ -120,5 +102,25 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        /*HandPickClient client1 = ServiceGenerator.createServicePost(HandPickClient.class);
+        Call<Detail> detailCall =
+                client1.getDetail(16844);
+        detailCall.enqueue(new Callback<Detail>() {
+            @Override
+            public void onResponse(Response<Detail> response, Retrofit retrofit) {
+                if (response.isSuccess()) {
+//                    Detail d = response.body();
+                    Detail d = response.body();
+//                    Log.e(TAG, d.toString());
+                    String temp = d.getDetail();
+                    swipeContainer.setRefreshing(false);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                t.printStackTrace();
+            }
+        });*/
     }
 }
