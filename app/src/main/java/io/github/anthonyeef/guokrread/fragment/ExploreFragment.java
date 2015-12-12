@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import io.github.anthonyeef.guokrread.R;
+import io.github.anthonyeef.guokrread.adapter.ChannelAdapter;
+import io.github.anthonyeef.guokrread.rest.model.Channel;
 
 /**
  * Created by anthonyeef on 12/11/15.
@@ -30,6 +32,7 @@ public class ExploreFragment extends Fragment{
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), 2));
-        recyclerView.setAdapter(new );
+        recyclerView.setAdapter(new ChannelAdapter(getActivity(),
+                Channel.getChannelList()));
     }
 }
