@@ -75,14 +75,6 @@ public class HomeFragment extends Fragment {
     }
     private void setupRetrofit(final RecyclerView recyclerView) {
 
-  /*      HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);*/
-
-//        OkHttpClient httpClient = new OkHttpClient();
-
-//        httpClient.interceptors().add(logging);
-
-
         HandPickClient client = ServiceGenerator.createService(HandPickClient.class);
         Call<ResponseModel> call =
                 client.fetchResponse("by_since", "15", "20", "all");
@@ -102,25 +94,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        /*HandPickClient client1 = ServiceGenerator.createServicePost(HandPickClient.class);
-        Call<Detail> detailCall =
-                client1.getDetail(16844);
-        detailCall.enqueue(new Callback<Detail>() {
-            @Override
-            public void onResponse(Response<Detail> response, Retrofit retrofit) {
-                if (response.isSuccess()) {
-//                    Detail d = response.body();
-                    Detail d = response.body();
-//                    Log.e(TAG, d.toString());
-                    String temp = d.getDetail();
-                    swipeContainer.setRefreshing(false);
-                }
-            }
 
-            @Override
-            public void onFailure(Throwable t) {
-                t.printStackTrace();
-            }
-        });*/
+
     }
 }

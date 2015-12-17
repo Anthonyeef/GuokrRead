@@ -7,24 +7,21 @@ import org.simpleframework.xml.Root;
  * Created by anthonyeef on 12/11/15.
  */
 
-@Root( name = "html")
+@Root(name = "html")
 public class Detail {
-/*    @Element(name = "head")
-    public class Head {
-        @Element(name = "title")
-        public class Title {
-            String title;
-        }
-    }
+    /**
+     * body : html content
+     * header_img: header image display on header
+     */
 
     @Element(name = "body")
-    public class body {
-        String body;
-    }*/
-    @Element(name = "head")
-    public String detail;
+    private String body;
 
-    public String getDetail() {
-        return this.detail;
+    public Detail() {
+        super();
+    }
+
+    public String getBody() {
+        return body;
     }
 }

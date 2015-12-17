@@ -1,18 +1,21 @@
 package io.github.anthonyeef.guokrread.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.util.List;
 
 import io.github.anthonyeef.guokrread.R;
+import io.github.anthonyeef.guokrread.app.UIDetail;
 import io.github.anthonyeef.guokrread.rest.model.result;
 
 /**
@@ -21,15 +24,16 @@ import io.github.anthonyeef.guokrread.rest.model.result;
 public class ArticleRecyclerAdapter extends
         RecyclerView.Adapter<ArticleRecyclerAdapter.ViewHolder> {
 
-    private Context mContext;
-    private List<result> mResults;
+    public static Context mContext;
+    public static List<result> mResults;
 
     public ArticleRecyclerAdapter(Context context, List<result> results) {
         this.mContext = context;
         this.mResults = results;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements
+            View.OnClickListener {
         public final View mView;
         public final SimpleDraweeView mItemImage;
         public final TextView mTitle;
@@ -45,6 +49,17 @@ public class ArticleRecyclerAdapter extends
             mAuthor = (TextView) view.findViewById(R.id.feed_author_name);
             mReply = (TextView) view.findViewById(R.id.feed_replies_count);
             mSource = (TextView) view.findViewById(R.id.item_source);
+
+            mView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view){
+            int position = getAdapterPosition();
+            Toast.makeText(view.getContext(), "position = "+ position, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(mContext, UIDetail.class);
+            intent.putExtra("RESOURCE_LINK", mResults.get(position).getLink_v2());
+            view.getContext().startActivity(intent);
         }
 
     }
@@ -53,7 +68,10 @@ public class ArticleRecyclerAdapter extends
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.feed_list_item, parent, false);
-        return new ViewHolder(view);
+        final ViewHolder temp = new ViewHolder(view);
+
+//        return new ViewHolder(temp);
+        return temp;
     }
 
     @Override
