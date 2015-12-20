@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment {
 
         HandPickClient client = ServiceGenerator.createService(HandPickClient.class);
         Call<ResponseModel> call =
-                client.fetchResponse("by_since", "15", "40", "science");
+                client.fetchResponse("by_since", "15", "40", "all");
         call.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Response<ResponseModel> response, Retrofit retrofit) {

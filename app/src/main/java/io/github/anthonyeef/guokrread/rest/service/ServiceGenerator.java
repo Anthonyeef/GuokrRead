@@ -1,8 +1,11 @@
 package io.github.anthonyeef.guokrread.rest.service;
 
 import com.facebook.stetho.okhttp.StethoInterceptor;
+import com.squareup.okhttp.Cache;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.logging.HttpLoggingInterceptor;
+
+import java.io.File;
 
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
@@ -18,6 +21,13 @@ public class ServiceGenerator {
     public static int HTTP_RESPONSE_DISK_CACHE_MAX_SIZE = 3*1024*1024;
 
     public static OkHttpClient httpClient = new OkHttpClient();
+
+    public void CacheResponse(File cacheDirectory) throws Exception {
+        int cacheSize = 10 * 1024 * 1024;
+        Cache cache = new Cache(cacheDirectory, cacheSize);
+
+        getHttpClient().setCache(cache);
+    }
 
     public static OkHttpClient getHttpClient() {
         return httpClient;
@@ -55,14 +65,6 @@ public class ServiceGenerator {
 
         /*set Stetho*/
         client.networkInterceptors().add(new StethoInterceptor());
-
-
-        /*set Cache*/
-//        final  File baseDir = AppContext.mContext.getCacheDir();
-//        if (baseDir != null) {
-//            final File cacheDir = new File(baseDir, "HttpResponseCache");
-//            client.setCache(new Cache(cacheDir, HTTP_RESPONSE_DISK_CACHE_MAX_SIZE));
-//        }
 
         return client;
     }

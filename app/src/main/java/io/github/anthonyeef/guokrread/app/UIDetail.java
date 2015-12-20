@@ -1,12 +1,15 @@
 package io.github.anthonyeef.guokrread.app;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.webkit.WebView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -21,11 +24,19 @@ import io.github.anthonyeef.guokrread.rest.service.ServiceGenerator;
 
 /**
  * Created by anthonyeef on 12/10/15.
+ *
+ * This activity receive link of post from fragment,
+ * display the content within a WebView, after adding
+ * css style
  */
 public class UIDetail extends AppCompatActivity{
     final static String TAG = UIDetail.class.getSimpleName();
     private Handler mHandler;
 
+    @Bind(R.id.head_img_view)
+    SimpleDraweeView mHeader;
+    @Bind(R.id.detail_toolbar)
+    Toolbar mToolbar;
     @Bind(R.id.webview)
     WebView mWebView;
 
@@ -34,8 +45,15 @@ public class UIDetail extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle("Detail");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         final String source_link = getIntent().getExtras().getString("RESOURCE_LINK");
+        final String headline_img = getIntent().getExtras().getString("HEADER_IMAGE");
+
+        Uri imageUrl = Uri.parse(headline_img);
+        mHeader.setImageURI(imageUrl);
 
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.getSettings().setCacheMode(1);

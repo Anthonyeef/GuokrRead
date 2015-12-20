@@ -8,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
@@ -56,9 +55,10 @@ public class ArticleRecyclerAdapter extends
         @Override
         public void onClick(View view){
             int position = getAdapterPosition();
-            Toast.makeText(view.getContext(), "position = "+ position, Toast.LENGTH_LONG).show();
+//            Toast.makeText(view.getContext(), "position = "+ position, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(mContext, UIDetail.class);
             intent.putExtra("RESOURCE_LINK", mResults.get(position).getLink_v2());
+            intent.putExtra("HEADER_IMAGE", mResults.get(position).getHeadline_img());
             view.getContext().startActivity(intent);
         }
 
@@ -86,6 +86,15 @@ public class ArticleRecyclerAdapter extends
 
         Uri imageUri = Uri.parse(result.getHeadline_img());
         holder.mItemImage.setImageURI(imageUri);
+
+
+        /*TODO: try add OnClickListener for item here*/
+     /*   holder.mAuthor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });*/
 
     }
 
