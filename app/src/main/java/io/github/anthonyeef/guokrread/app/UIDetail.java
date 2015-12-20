@@ -7,6 +7,7 @@ import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.webkit.WebView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -46,8 +47,17 @@ public class UIDetail extends AppCompatActivity{
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Detail");
+//        getSupportActionBar().setTitle("Detail");
+//        getSupportActionBar().setTitle(getIntent().getExtras().getString("TITLE"));
+        getSupportActionBar().setTitle(getIntent().getExtras().getString("SOURCE"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         final String source_link = getIntent().getExtras().getString("RESOURCE_LINK");
         final String headline_img = getIntent().getExtras().getString("HEADER_IMAGE");
@@ -86,6 +96,12 @@ public class UIDetail extends AppCompatActivity{
                 });
             }
         });
+    }
+
+    @Override
+    public void onBackPressed(){
+        finish();
+        /*TODO:Add animation here*/
     }
 
 }

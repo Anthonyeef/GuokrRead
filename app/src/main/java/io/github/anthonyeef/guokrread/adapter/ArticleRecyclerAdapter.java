@@ -59,6 +59,8 @@ public class ArticleRecyclerAdapter extends
             Intent intent = new Intent(mContext, UIDetail.class);
             intent.putExtra("RESOURCE_LINK", mResults.get(position).getLink_v2());
             intent.putExtra("HEADER_IMAGE", mResults.get(position).getHeadline_img());
+            intent.putExtra("TITLE", mResults.get(position).getTitle());
+            intent.putExtra("SOURCE", mResults.get(position).getSource_name());
             view.getContext().startActivity(intent);
         }
 
