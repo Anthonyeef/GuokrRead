@@ -2,9 +2,11 @@
 
 Here is an unofficial Android application for 果壳精选.
 
-**Still underbuilding**
+Because the official application looks like the old 90's style, so I make this one -- with Material Design -- just for fun. Also in the purpose of practising some new libraries.
 
-Because the official application looks like the old 90's style, so I make this one -- with Material Design -- just for fun. Also in ther purpose of practising some new libraries.
+**Still underbuilding**
+Some key features like the 'favourite fuction' is still waiting to be implemented. Due to the final exams in college and my time schedule, the developing process is continuing but slowly.
+
 
 
 ### Screenshot:
@@ -19,10 +21,12 @@ Because the official application looks like the old 90's style, so I make this o
 - GSON from Google
 - OkHttp from Square
 
+The License of each library will be added right after this project is finished :)
 
 ### Disclaimer
 - The API I use for this application DOES NOT FROM Guokr's authorization. I tried to contact staff there but no more reply then. I got the API by myself using the software called Charles. This action should be think as incorrect and I would delete the code if anyone from Guokr ask me to.
 - Though this section is named 'Disclaimer', I would take responsibility for this project.
+- Anyone who get API from the source code should not do bad things to Guokr's server. Do not do evil.
  
 
 ### Intern wanted
