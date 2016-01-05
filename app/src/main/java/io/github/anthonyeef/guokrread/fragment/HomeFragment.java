@@ -67,6 +67,20 @@ public class HomeFragment extends Fragment {
     private void setupRecyclerView(RecyclerView recyclerView, List<result> results) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
         recyclerView.setAdapter(new ArticleRecyclerAdapter(getContext(), results));
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                int topRowVerticalPosition =
+                        (recyclerView == null || recyclerView.getChildCount() == 0) ? 0 : (recyclerView.getChildAt(0).getTop());
+                swipeContainer.setEnabled(topRowVerticalPosition >= 0);
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView1, int newState) {
+                super.onScrollStateChanged(recyclerView1, newState);
+            }
+        });
     }
 
     public void fetchData(RecyclerView recyclerView) {

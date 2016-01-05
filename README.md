@@ -10,6 +10,7 @@ Because the official application looks like the old 90's style, so I make this o
 ### Screenshot:
 
 <img src="http://7vijxa.com1.z0.glb.clouddn.com/IMG_2015-12-10%2015%3A22%3A19.jpg" width="45%" />
+<img src="http://ww4.sinaimg.cn/large/9fbe0bc0gw1ezp094nc1lj20l10zk76a.jpg" widgth="45%" />
 
 ### Libraries I used
 - Retrofit 2.0-beta from Square
