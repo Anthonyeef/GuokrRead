@@ -24,7 +24,7 @@ Some key features like the 'favourite fuction' is still waiting to be implemente
 The License of each library will be added right after this project is finished :)
 
 ### Disclaimer
-- The API I use for this application DOES NOT FROM Guokr's authorization. I tried to contact staff there but no more reply then. I got the API by myself using the software called Charles. This action should be think as incorrect and I would delete the code if anyone from Guokr ask me to.
+- The API I use for this application DOES NOT FROM Guokr's authorization. I tried to contact staff there but no more reply then. I got the API by myself using the software called Charles. This action should be thought as incorrect and I would delete the code if anyone from Guokr ask me to.
 - Though this section is named 'Disclaimer', I would take responsibility for this project.
 - Anyone who get API from the source code should not do bad things to Guokr's server. Do not do evil.
  
