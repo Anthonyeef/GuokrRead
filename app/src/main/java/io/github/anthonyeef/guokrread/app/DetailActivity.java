@@ -30,14 +30,16 @@ import io.github.anthonyeef.guokrread.rest.service.ServiceGenerator;
  * display the content within a WebView, after adding
  * css style
  */
-public class UIDetail extends AppCompatActivity{
-    final static String TAG = UIDetail.class.getSimpleName();
+public class DetailActivity extends AppCompatActivity{
+    final static String TAG = DetailActivity.class.getSimpleName();
     private Handler mHandler;
 
     @Bind(R.id.head_img_view)
     SimpleDraweeView mHeader;
+
     @Bind(R.id.detail_toolbar)
     Toolbar mToolbar;
+
     @Bind(R.id.webview)
     WebView mWebView;
 
@@ -47,11 +49,10 @@ public class UIDetail extends AppCompatActivity{
         setContentView(R.layout.activity_detail);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
-//        getSupportActionBar().setTitle("Detail");
-//        getSupportActionBar().setTitle(getIntent().getExtras().getString("TITLE"));
         getSupportActionBar().setTitle(getIntent().getExtras().getString("SOURCE"));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +83,6 @@ public class UIDetail extends AppCompatActivity{
 
             @Override
             public void onResponse(final Response response) throws IOException {
-//                Log.v(TAG, response.body().toString());
                 final String content = response.body().string();
                 mHandler = new Handler(Looper.getMainLooper());
                 mHandler.post(new Runnable() {

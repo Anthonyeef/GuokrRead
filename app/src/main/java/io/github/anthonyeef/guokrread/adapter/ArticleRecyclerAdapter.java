@@ -14,7 +14,7 @@ import com.facebook.drawee.view.SimpleDraweeView;
 import java.util.List;
 
 import io.github.anthonyeef.guokrread.R;
-import io.github.anthonyeef.guokrread.app.UIDetail;
+import io.github.anthonyeef.guokrread.app.DetailActivity;
 import io.github.anthonyeef.guokrread.rest.model.result;
 
 /**
@@ -56,7 +56,7 @@ public class ArticleRecyclerAdapter extends
         public void onClick(View view){
             int position = getAdapterPosition();
 //            Toast.makeText(view.getContext(), "position = "+ position, Toast.LENGTH_LONG).show();
-            Intent intent = new Intent(mContext, UIDetail.class);
+            Intent intent = new Intent(mContext, DetailActivity.class);
             intent.putExtra("RESOURCE_LINK", mResults.get(position).getLink_v2());
             intent.putExtra("HEADER_IMAGE", mResults.get(position).getHeadline_img());
             intent.putExtra("TITLE", mResults.get(position).getTitle());
