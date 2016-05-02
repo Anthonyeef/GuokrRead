@@ -22,31 +22,30 @@ public class UIMain extends AppCompatActivity {
 
     @Bind(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
+
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
+
     @Bind(R.id.nav_view)
     NavigationView navigationView;
+
     @Bind(R.id.tabs)
     TabLayout mTabs;
+
+    @Bind(R.id.pager)
+    ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         Fresco.initialize(this);
-
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
 
-        setuplayout();
-
-        ViewPager mViewPager = (ViewPager) findViewById(R.id.pager);
-        if (mViewPager != null) {
-            setupViewPager(mViewPager);
-        }
-
+        setupLayout();
+        setupViewPager(mViewPager);
         setupDrawerContent(navigationView);
-
     }
 
     @Override
@@ -74,7 +73,7 @@ public class UIMain extends AppCompatActivity {
         mTabs.setupWithViewPager(viewPager);
     }
 
-    private void setuplayout() {
+    private void setupLayout() {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle(" ₍₍ (ง ᐛ)ว ⁾⁾");
     }
