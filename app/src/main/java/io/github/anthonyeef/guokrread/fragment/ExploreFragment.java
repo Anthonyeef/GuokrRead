@@ -29,7 +29,6 @@ public class ExploreFragment extends Fragment{
         return view;
     }
 
-
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), 2));
         recyclerView.setAdapter(new ChannelAdapter(getActivity(),

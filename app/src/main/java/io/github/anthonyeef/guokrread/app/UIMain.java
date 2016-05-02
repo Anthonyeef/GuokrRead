@@ -49,7 +49,6 @@ public class UIMain extends AppCompatActivity {
 
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -59,7 +58,6 @@ public class UIMain extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         if (id == R.id.action_settings) {
             return true;
         }
@@ -74,9 +72,6 @@ public class UIMain extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
         mTabs.setupWithViewPager(viewPager);
-
-//        adapter.addFragment(new HomeFragment(), getString(R.string.home));
-//        adapter.addFragment(new ExploreFragment(), getString(R.string.explore));
     }
 
     private void setuplayout() {

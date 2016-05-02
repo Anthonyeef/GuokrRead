@@ -99,7 +99,6 @@ public class HomeFragment extends Fragment {
                 mResults = responseModel.getResult();
                 setupRecyclerView(recyclerView, mResults);
                 swipeContainer.setRefreshing(false);
-//                Log.v(TAG, responseModel.getNow());
             }
 
             @Override
