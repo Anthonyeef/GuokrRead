@@ -5,5 +5,4 @@
         android:drawable="@drawable/item_tag_back_press"/>
     <item
         android:drawable="@drawable/item_tag_back_default" />
-
 </selector>
