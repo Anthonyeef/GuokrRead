@@ -16,7 +16,6 @@ import io.github.anthonyeef.guokrread.R;
 public class PagerAdapter extends FragmentPagerAdapter {
     private final List<Fragment> mFragments = new ArrayList<>();
     private final List<String> mTitles = new ArrayList<>();
-//    private final List<String> mFragmentTitles = new ArrayList<>();
 
     private static final int[] TITLES = {
         R.string.page_title_home, R.string.page_title_explore
@@ -35,19 +34,6 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-  /*      final Fragment fragment;
-        switch (position) {
-            case 0:
-                fragment = HomeFragment.newInstance();
-                break;
-            case 1:
-                fragment = HomeFragment.newInstance();
-                break;
-            default:
-                fragment = null;
-                break;
-        }
-        return fragment;*/
         return mFragments.get(position);
     }
 
@@ -58,17 +44,6 @@ public class PagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-//        return mTitles.get(position);
         return mContext.getString(TITLES[position]);
-   /*     final String title;
-        switch (position) {
-            case 0:
-                title = "Home";
-                break;
-            default:
-                title = "null";
-                break;
-        }
-        return title;*/
     }
 }
