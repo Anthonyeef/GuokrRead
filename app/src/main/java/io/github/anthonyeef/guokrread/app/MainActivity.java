@@ -16,6 +16,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.github.anthonyeef.guokrread.R;
 import io.github.anthonyeef.guokrread.adapter.PagerAdapter;
+import io.github.anthonyeef.guokrread.fragment.ExploreFragment;
 import io.github.anthonyeef.guokrread.fragment.HomeFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -67,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
     private void setupViewPager(ViewPager viewPager) {
         PagerAdapter adapter = new PagerAdapter(getSupportFragmentManager(), this);
         adapter.addFragment(new HomeFragment(), "Home");
-        adapter.addFragment(new HomeFragment(), "Home2");
+        adapter.addFragment(new ExploreFragment(), "Explore");
         viewPager.setAdapter(adapter);
 
         mTabs.setupWithViewPager(viewPager);
