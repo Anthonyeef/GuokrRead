@@ -30,10 +30,11 @@ The License of each library will be added right after this project is finished :
  
 
 ### Intern wanted
-If you like my work and still have a long time internship position in Beijing start from March, 2016, please feel free to contact me via my email(could be found on my GitHub profile) 
-;)
+-If you like my work and still have a long time internship position in Beijing start from March, 2016, please feel free to contact me via my email(could be found on my GitHub profile)- 
+
+Already found intern ;)
 
 ### Others:
-- My blog: [https://anthonyeef.github.io](https://anthonyeef.github.io)
+- My blog: [http://anthonyeef.github.io](https://anthonyeef.github.io)
 - My Stack Overflow page: [http://stackoverflow.com/users/2761728/anthonyeef](http://stackoverflow.com/users/2761728/anthonyeef)
 - My Zhihu: [https://www.zhihu.com/people/wu-yi-fen](https://www.zhihu.com/people/wu-yi-fen)
