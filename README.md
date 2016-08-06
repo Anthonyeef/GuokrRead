@@ -38,3 +38,7 @@ Already found intern ;)
 - My blog: [http://anthonyeef.github.io](https://anthonyeef.github.io)
 - My Stack Overflow page: [http://stackoverflow.com/users/2761728/anthonyeef](http://stackoverflow.com/users/2761728/anthonyeef)
 - My Zhihu: [https://www.zhihu.com/people/wu-yi-fen](https://www.zhihu.com/people/wu-yi-fen)
+
+### Attention:
+- Due to the new version of Guokr Hanpick's official app, the api has changed and the old api is deprecated.
+- New version of my app is coming soon, with new api and new design ;-)
